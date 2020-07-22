@@ -14,12 +14,12 @@ class ExpandableTabbarController: UITabBarController {
 		static let barButtonHeight: CGFloat = 12
 	}
 	
-	private var _dockViewHeightConstraint: NSLayoutConstraint?
 	private var _dockViewBottomConstraint: NSLayoutConstraint?
 	
 	private var _isOpen = true {
 		didSet {
-			let height = _isOpen ? 0 : Constant.dockViewHeight - Constant.barButtonHeight
+			view.layoutIfNeeded()
+			let height = (_isOpen ? 0 : Constant.dockViewHeight - Constant.barButtonHeight) - tabBar.frame.size.height
 			UIView.animate(withDuration: 0.5) {
 				self._dockViewBottomConstraint!.constant = height
 				self.view.layoutIfNeeded()
@@ -114,7 +114,7 @@ class ExpandableTabbarController: UITabBarController {
 		])
 		return view
 	}()
-
+	
 	override func loadView() {
 		super.loadView()
 		setupView()
@@ -122,14 +122,32 @@ class ExpandableTabbarController: UITabBarController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.view.bringSubviewToFront(tabBar)
+		tabBar.isTranslucent = false
+	}
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		print("ExpandableTabbarController viewDidLayoutSubviews: \(self.tabBar.isHidden)")
+		if tabBar.isHidden == false {
+			view.bringSubviewToFront(tabBar)
+		}
+		let height = (_isOpen ? 0 : Constant.dockViewHeight - Constant.barButtonHeight) - tabBar.frame.size.height
+		_dockViewBottomConstraint!.constant = height
+		_dockViewBottomConstraint?.isActive = !tabBar.isHidden
+	}
+	
+	func hideDockView(_ shouldHide: Bool) {
+		view.bringSubviewToFront(tabBar)
+		_dockView.isHidden = shouldHide
 	}
 	
 	private func setupView() {
 		view.addSubview(_dockView)
-		let height = _isOpen ? 0 : Constant.dockViewHeight - Constant.barButtonHeight
-		// place _dockView on top of the tabbar
-		_dockViewBottomConstraint = _dockView.bottomAnchor.constraint(equalTo: tabBar.topAnchor, constant: height)
+		_dockViewBottomConstraint = _dockView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+		
+		// crash because tabBar is removed from view tree
+		// _dockViewBottomConstraint = _dockView.bottomAnchor.constraint(equalTo: tabBar.topAnchor)
+		
 		NSLayoutConstraint.activate([
 			_dockView.heightAnchor.constraint(equalToConstant: Constant.dockViewHeight),
 			_dockView.leftAnchor.constraint(equalTo: view.leftAnchor),
@@ -138,8 +156,7 @@ class ExpandableTabbarController: UITabBarController {
 		])
 	}
 	
-	@objc private func onTapped(_ sender: UIButton)
-	{
+	@objc private func onTapped(_ sender: UIButton) {
 		let vc = UIViewController()
 		if sender == _button1 {
 			vc.view.backgroundColor = .red
@@ -151,8 +168,7 @@ class ExpandableTabbarController: UITabBarController {
 		self.present(vc, animated: true, completion: nil)
 	}
 
-	@objc private func closeOpenAction(_ sender: Any)
-	{
+	@objc private func closeOpenAction(_ sender: Any) {
 		_isOpen = !_isOpen
 	}
 }

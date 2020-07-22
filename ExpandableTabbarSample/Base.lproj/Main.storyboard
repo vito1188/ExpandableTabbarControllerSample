@@ -23,21 +23,98 @@
             </objects>
             <point key="canvasLocation" x="552" y="403"/>
         </scene>
+        <!--Brown View Controller-->
+        <scene sceneID="hZw-uC-F9u">
+            <objects>
+                <viewController id="Mxt-4I-qmQ" customClass="BrownViewController" customModule="ExpandableTabbarSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mHs-n0-hPL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vG-Ij-aUc">
+                                <rect key="frame" x="176.5" y="425" width="61" height="46"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="Push"/>
+                                <connections>
+                                    <segue destination="OE4-Rp-I1v" kind="show" id="s9s-SW-aDf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9vG-Ij-aUc" firstAttribute="centerY" secondItem="mHs-n0-hPL" secondAttribute="centerY" id="AOj-EM-Wvy"/>
+                            <constraint firstItem="9vG-Ij-aUc" firstAttribute="centerX" secondItem="mHs-n0-hPL" secondAttribute="centerX" id="Ezi-U7-gQ4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HpI-3e-FYF"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ijm-D0-mZo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2e2-dh-h4a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1374" y="-952"/>
+        </scene>
+        <!--Grey View Controller-->
+        <scene sceneID="Dgh-pR-AIq">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="OE4-Rp-I1v" customClass="GreyViewController" customModule="ExpandableTabbarSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dSm-yI-ZJX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="pjl-cH-uU6"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Iss-bV-s2E"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1HF-Om-sPq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2200" y="-952"/>
+        </scene>
+        <!--Item 3-->
+        <scene sceneID="LvQ-20-tYx">
+            <objects>
+                <navigationController id="mNC-iq-j4J" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item 3" id="hA6-WI-v9I"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yOo-C5-S9X">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Mxt-4I-qmQ" kind="relationship" relationship="rootViewController" id="bUr-ZI-Lq3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nx-y7-TCr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="551" y="-952"/>
+        </scene>
         <!--Item 1-->
         <scene sceneID="pPm-KX-LYo">
             <objects>
-                <viewController id="LMp-7N-CMv" sceneMemberID="viewController">
+                <viewController id="LMp-7N-CMv" customClass="GreenViewController" customModule="ExpandableTabbarSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bga-YB-CCX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5E-ko-dRK">
+                                <rect key="frame" x="171" y="427" width="72" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onClick:" destination="LMp-7N-CMv" eventType="touchUpInside" id="sFW-J5-rVI"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="g5E-ko-dRK" firstAttribute="centerY" secondItem="bga-YB-CCX" secondAttribute="centerY" id="BTb-lE-Xau"/>
+                            <constraint firstItem="g5E-ko-dRK" firstAttribute="centerX" secondItem="bga-YB-CCX" secondAttribute="centerX" id="KJj-Pw-efc"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="YbX-8w-oNS"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="Zpf-jK-d31"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yfG-mG-ttc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="552" y="-245"/>
+            <point key="canvasLocation" x="550.72463768115949" y="-245.08928571428569"/>
         </scene>
         <!--Expandable Tabbar Controller-->
         <scene sceneID="Ve7-V7-owe">
@@ -51,6 +128,7 @@
                     <connections>
                         <segue destination="LMp-7N-CMv" kind="relationship" relationship="viewControllers" id="9JV-eK-jv7"/>
                         <segue destination="Sqx-2F-NT3" kind="relationship" relationship="viewControllers" id="ZJ8-iA-xet"/>
+                        <segue destination="mNC-iq-j4J" kind="relationship" relationship="viewControllers" id="xCk-sK-EES"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ge7-sj-gTx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
